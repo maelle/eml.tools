@@ -103,6 +103,7 @@ dataset <- new("dataset",
                title = title,
                creator = creator,
                pubDate = pubDate,
+               methods = set_methods(paste0(getwd(), "/inst/extdata/methods.txt")),
                intellectualRights = intellectualRights,
                abstract = abstract,
                coverage = coverage,
@@ -118,4 +119,4 @@ eml <- new("eml",
            system = "uuid", # type of identifier
            dataset = dataset)
 eml_validate(eml)
-write_eml(eml, "inst/extdata/example.xml")
+write_eml(eml, file = paste0(getwd(), "/inst/extdata/example.xml"))
