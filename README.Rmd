@@ -1,0 +1,17 @@
+---
+output: github_document
+---
+
+Package in construction for using eml in data analysis.
+
+First goal: having a function for translating factors into their meanings. 
+
+```{r}
+library("eml.tools")
+data("animals_eml")
+data("animals_data")
+animals_data
+eml_translate_factors(df = animals_data, eml = animals_eml, keep = FALSE)
+eml_translate_factors(df = animals_data, eml = animals_eml, keep = TRUE)
+
+```
