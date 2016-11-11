@@ -9,6 +9,14 @@
       </individualName>
       <electronicMailAddress>fakeaddress@email.com</electronicMailAddress>
     </creator>
+    <associatedParty>
+      <individualName>
+        <givenName>Another</givenName>
+        <surName>Contributor</surName>
+      </individualName>
+      <electronicMailAddress>otherfakeadress@email.com</electronicMailAddress>
+      <role>ctb</role>
+    </associatedParty>
     <pubDate>2016</pubDate>
     <abstract>Test dataset and eml to write a function for translating factors</abstract>
     <intellectualRights>Free to use</intellectualRights>
@@ -48,6 +56,23 @@
         </taxonomicClassification>
       </taxonomicCoverage>
     </coverage>
+    <contact>
+      <individualName>
+        <givenName>The</givenName>
+        <givenName>Dataset</givenName>
+        <surName>Creator</surName>
+      </individualName>
+      <organizationName>Harvard Forest</organizationName>
+      <address>
+        <deliveryPoint>324 North Main Street</deliveryPoint>
+        <city>Petersham</city>
+        <administrativeArea>MA</administrativeArea>
+        <postalCode>01366</postalCode>
+        <country>USA</country>
+      </address>
+      <phone>000-000-0000</phone>
+      <electronicMailAddress>fakeaddress@email.com</electronicMailAddress>
+    </contact>
     <methods>
       <methodStep>
         <description>
@@ -84,11 +109,11 @@
                 <enumeratedDomain>
                   <codeDefinition>
                     <code>A</code>
-                    <definition>cat_monster</definition>
+                    <definition>monstercat</definition>
                   </codeDefinition>
                   <codeDefinition>
                     <code>B</code>
-                    <definition>dog_monster</definition>
+                    <definition>monsterdog</definition>
                   </codeDefinition>
                 </enumeratedDomain>
               </nonNumericDomain>

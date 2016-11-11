@@ -1,12 +1,14 @@
 library("EML")
 
 # create the example data
-data <- data.frame(animal = c(rep("A", 10), rep("B", 10)),
+animals_data <- data.frame(animal = c(rep("A", 10), rep("B", 10)),
                    age = c(rep("A", 5), rep("B", 5), rep("A", 5), rep("B", 5)),
                    size = c(rnorm(mean = 50, n = 5),
                             rnorm(mean = 80, n = 5),
                             rnorm(mean = 10, n = 5),
                             rnorm(mean = 20, n = 5)))
+animals_data <- tibble::as_tibble(animals_data)
+save(animals_data, file = "data/animals_data.RData")
 
 # attributesList
 attributes <-
@@ -39,8 +41,8 @@ attributes <-
   )
 
 # two of the attributes are factors
-animal.codes <- c(A = "cat_monster",
-                  B = "dog_monster")
+animal.codes <- c(A = "monstercat",
+                  B = "monsterdog")
 age.codes <- c(A = "juvenile",
                B = "adult")
 factors <- rbind(
@@ -94,29 +96,56 @@ abstract <- "Test dataset and eml to write a function for translating factors"
 intellectualRights <- "Free to use"
 
 # parties
-R_person <- as.person("The Dataset Creator <fakeaddress@email.com>")
+R_person <- as.person("The Dataset Creator [cre] <fakeaddress@email.com>")
 creator <- as(R_person, "creator")
 
+associatedParty <- as.person("Another Contributor [ctb] <otherfakeadress@email.com>")
+associatedParty <- as(associatedParty, "associatedParty")
+
+# methods
+methods_file <- paste0(getwd(), "/inst/extdata/methods.txt")
+methods <- set_methods(methods_file)
+
+# contact
+HF_address <- new("address",
+                  deliveryPoint = "324 North Main Street",
+                  city = "Petersham",
+                  administrativeArea = "MA",
+                  postalCode = "01366",
+                  country = "USA")
+publisher <- new("publisher",
+                 organizationName = "Harvard Forest",
+                 address = HF_address)
+contact <-
+  new("contact",
+      individualName = creator@individualName,
+      electronicMail = creator@electronicMailAddress,
+      address = HF_address,
+      organizationName = "Harvard Forest",
+      phone = "000-000-0000")
+
 # dataset
-methods <- "invented"
+
 dataset <- new("dataset",
                title = title,
                creator = creator,
                pubDate = pubDate,
-               methods = set_methods(paste0(getwd(), "/inst/extdata/methods.txt")),
                intellectualRights = intellectualRights,
                abstract = abstract,
+               associatedParty = associatedParty,
                coverage = coverage,
-               contact = creator,
+               contact = contact,
+               methods = methods,
                dataTable = dataTable)
 
 # the function should return column names that look like the code column names,
 # not definition for all!
 
 
-eml <- new("eml",
+animals_eml <- new("eml",
            packageId = "is",
            system = "uuid", # type of identifier
            dataset = dataset)
-eml_validate(eml)
-write_eml(eml, file = paste0(getwd(), "/inst/extdata/example.xml"))
+eml_validate(animals_eml)
+write_eml(animals_eml, file = paste0(getwd(), "/inst/extdata/example.xml"))
+save(animals_eml, file = "data/animals_eml.RData")
