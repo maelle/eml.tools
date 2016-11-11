@@ -17,6 +17,7 @@
 eml_translate_factors <- function(df, eml, keep = FALSE){
   df_factor <- EML::eml_get(eml, "attributeList")$factors
   names_factors <- unique(df_factor$attributeName)
+  names_factors <- names_factors[names_factors %in% names(df)]
 
   for(name in names_factors){
     df <- eml_translate_one_factor(name, df = df,

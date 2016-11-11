@@ -21,6 +21,7 @@ data("animals_eml")
 df_factor <- eml_get(animals_eml, "attributeList")$factors
 data("animals_data")
 eml_translate_factors(df = animals_data, eml = animals_eml, keep = FALSE)
+eml_translate_factors(df = animals_data, eml = animals_eml, keep = TRUE)
 
 }
 
