@@ -20,4 +20,3 @@ A data.frame(\code{dplyr tbl_df}) with
 }
 }
 \keyword{data}
-

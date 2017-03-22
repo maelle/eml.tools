@@ -4,7 +4,7 @@
 \alias{eml_translate_factors}
 \title{Translate factors into their meanings}
 \usage{
-eml_translate_factors(df, eml, keep = FALSE)
+eml_translate_factors(df, eml, keep = FALSE, which_table = NULL)
 }
 \arguments{
 \item{df}{Data frame}
@@ -12,6 +12,8 @@ eml_translate_factors(df, eml, keep = FALSE)
 \item{eml}{eml metadata}
 
 \item{keep}{Whether to keep the columns with codes. If FALSE, the meanings replace the factors previous codes.}
+
+\item{which_table}{for which table to retrieve the factors, if there are several tables (index)}
 }
 \description{
 Translate factors into their meanings
@@ -24,4 +26,3 @@ eml_translate_factors(df = animals_data, eml = animals_eml, keep = FALSE)
 eml_translate_factors(df = animals_data, eml = animals_eml, keep = TRUE)
 
 }
-

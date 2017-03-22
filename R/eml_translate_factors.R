@@ -3,6 +3,7 @@
 #' @param df Data frame
 #' @param eml eml metadata
 #' @param keep Whether to keep the columns with codes. If FALSE, the meanings replace the factors previous codes.
+#' @param which_table for which table to retrieve the factors, if there are several tables (index)
 #'
 #' @return
 #' @export
@@ -14,8 +15,17 @@
 #' eml_translate_factors(df = animals_data, eml = animals_eml, keep = FALSE)
 #' eml_translate_factors(df = animals_data, eml = animals_eml, keep = TRUE)
 #'
-eml_translate_factors <- function(df, eml, keep = FALSE){
-  df_factor <- EML::eml_get(eml, "attributeList")$factors
+eml_translate_factors <- function(df, eml, keep = FALSE,
+                                  which_table = NULL){
+
+  if(is.null(which_table)){
+    df_factor <- EML::eml_get(eml, "attributeList")$factors
+
+  }else{
+    dt <- eml_get(eml, "dataTable")
+    attrs <- eml_get(dt[[which_table]], "attributeList")
+    df_factor <- attrs$factors
+  }
   names_factors <- unique(df_factor$attributeName)
   names_factors <- names_factors[names_factors %in% names(df)]
 
@@ -31,6 +41,7 @@ eml_translate_factors <- function(df, eml, keep = FALSE){
 eml_translate_one_factor <- function(name, df, df_factor, keep){
   df_factor <- dplyr::filter_(df_factor, lazyeval::interp(~ attributeName == name))
   df_factor <- dplyr::select_(df_factor, quote(- attributeName))
+  df[, name] <- as.character(df[, name])
 
   if(keep){
     df_factor <- dplyr::rename_(df_factor, .dots=setNames("definition", paste0(name, "_meaning")))
