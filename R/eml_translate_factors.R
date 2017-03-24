@@ -5,12 +5,11 @@
 #' @param keep Whether to keep the columns with codes. If FALSE, the meanings replace the factors previous codes.
 #' @param which_table for which table to retrieve the factors, if there are several tables (index)
 #'
-#' @return
+#' @return A data.frame with translated factors
 #' @export
 #'
 #' @examples
 #' data("animals_eml")
-#' df_factor <- eml_get(animals_eml, "attributeList")$factors
 #' data("animals_data")
 #' eml_translate_factors(df = animals_data, eml = animals_eml, keep = FALSE)
 #' eml_translate_factors(df = animals_data, eml = animals_eml, keep = TRUE)
