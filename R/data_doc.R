@@ -28,3 +28,16 @@ NULL
 #' @keywords data
 #' @usage data(animals_eml)
 NULL
+
+#' Other example eml for the fake animals data
+#'
+#' Other example eml for the fake animals data
+#'
+#' An \code{eml} for a dataset, not a single table.
+#'
+#' @format \code{eml}
+#' @name animals_db_eml
+#' @docType data
+#' @keywords data
+#' @usage data(animals_db_eml)
+NULL

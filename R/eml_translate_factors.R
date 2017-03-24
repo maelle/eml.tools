@@ -3,7 +3,7 @@
 #' @param df Data frame
 #' @param eml eml metadata
 #' @param keep Whether to keep the columns with codes. If FALSE, the meanings replace the factors previous codes.
-#' @param which_table for which table to retrieve the factors, if there are several tables (index)
+#' @param which_table for which table to retrieve the factors, if there are several tables (entityName)
 #'
 #' @return A data.frame with translated factors
 #' @export
@@ -21,7 +21,11 @@ eml_translate_factors <- function(df, eml, keep = FALSE,
     df_factor <- as.data.frame(EML::eml_get(eml, "attributeList")$factors)
 
   }else{
+
     dt <- EML::eml_get(eml, "dataTable")
+
+    names <- vapply(dt, get_name, "")
+    which_table <- which(names == which_table)
     attrs <- EML::eml_get(dt[[which_table]], "attributeList")
     df_factor <- as.data.frame(attrs$factors)
   }
@@ -44,7 +48,6 @@ eml_translate_one_factor <- function(name, df, df_factor, keep){
 
   if(keep){
     df[[name]] <- as.character(df[[name]])
-
     df_factor <- dplyr::rename_(df_factor, .dots=setNames("definition", paste0(name, "_meaning")))
     df <- suppressWarnings(dplyr::left_join(df, df_factor, by = setNames("code", name)))
   }else{
@@ -55,4 +58,9 @@ eml_translate_one_factor <- function(name, df, df_factor, keep){
     df <- dplyr::select_(df, quote(- code))
   }
   return(df)
+}
+
+
+get_name <- function(table){
+  EML::eml_get(table, "entityName")
 }
