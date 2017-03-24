@@ -1,5 +1,5 @@
 
-[![Build status](https://ci.appveyor.com/api/projects/status/fju06tfixss6dce8?svg=true)](https://ci.appveyor.com/project/masalmon/eml-tools) [![Build Status](https://travis-ci.org/maelle/eml.tools.svg?branch=master)](https://travis-ci.org/maelle/eml.tools)
+[![Build status](https://ci.appveyor.com/api/projects/status/fju06tfixss6dce8?svg=true)](https://ci.appveyor.com/project/masalmon/eml-tools) [![Build Status](https://travis-ci.org/maelle/eml.tools.svg?branch=master)](https://travis-ci.org/maelle/eml.tools) [![codecov](https://codecov.io/gh/maelle/eml.tools/branch/master/graph/badge.svg)](https://codecov.io/gh/maelle/eml.tools)
 
 Package in construction for using EML in data analysis, currently only one function.
 
