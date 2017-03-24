@@ -7,7 +7,7 @@ Translating factors into their meanings
 =======================================
 
 When the EML only has one table
-===============================
+-------------------------------
 
 ``` r
 library("eml.tools")
@@ -95,7 +95,7 @@ eml_translate_factors(df = animals_data, eml = animals_eml, keep = TRUE)
     ## 20      B     B 21.500681     monsterdog       adult
 
 When the EML only has several tables
-====================================
+------------------------------------
 
 This is the case if the EML documents a database. In this case, we need to use the entityName of the table for which we want to perform the translation.
 

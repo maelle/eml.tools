@@ -10,7 +10,7 @@ Package in construction for using EML (Ecological Metadata Language) in data ana
 
 # Translating factors into their meanings
 
-# When the EML only has one table
+## When the EML only has one table
 
 ```{r}
 library("eml.tools")
@@ -23,7 +23,7 @@ eml_translate_factors(df = animals_data, eml = animals_eml, keep = TRUE)
 ```
 
 
-# When the EML only has several tables
+## When the EML only has several tables
 
 This is the case if the EML documents a database. In this case, we need to use the entityName of the table for which we want to perform the translation.
 
