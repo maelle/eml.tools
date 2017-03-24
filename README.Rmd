@@ -3,10 +3,11 @@ output: github_document
 ---
 
 [![Build status](https://ci.appveyor.com/api/projects/status/fju06tfixss6dce8?svg=true)](https://ci.appveyor.com/project/masalmon/eml-tools)
+[![Build Status](https://travis-ci.org/maelle/eml.tools.svg?branch=master)](https://travis-ci.org/maelle/eml.tools)
 
-Package in construction for using eml in data analysis.
+Package in construction for using EML in data analysis, currently only one function.
 
-First goal: having a function for translating factors into their meanings. 
+# Translating factors into their meanings. 
 
 ```{r}
 library("eml.tools")

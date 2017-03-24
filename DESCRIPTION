@@ -2,7 +2,7 @@ Package: eml.tools
 Type: Package
 Title: Helps Using EML Metadata
 Version: 0.1.0
-Authors@R: person("MaÃ«lle", "Salmon", email = "maelle.salmon@yahoo.se", role = c("aut", "cre"))
+Authors@R: person("Maëlle", "Salmon", email = "maelle.salmon@yahoo.se", role = c("aut", "cre"))
 Description: Allows using information from EML metadata to analyse a dataset,
     e.g. translating factors into the meanings of their levels.
 License: FreeBSD
@@ -16,4 +16,5 @@ Imports:
 RoxygenNote: 6.0.1
 Suggests:
     testthat,
-    knitr
+    knitr,
+    covr
