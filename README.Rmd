@@ -8,7 +8,9 @@ output: github_document
 
 Package in construction for using EML (Ecological Metadata Language) in data analysis, currently only one function. For creating a new EML, see the [rOpenSci `EML` package](https://github.com/ropensci/EML).
 
-# Translating factors into their meanings. 
+# Translating factors into their meanings
+
+# When the EML only has one table
 
 ```{r}
 library("eml.tools")
@@ -17,5 +19,26 @@ data("animals_data")
 animals_data
 eml_translate_factors(df = animals_data, eml = animals_eml, keep = FALSE)
 eml_translate_factors(df = animals_data, eml = animals_eml, keep = TRUE)
+
+```
+
+
+# When the EML only has several tables
+
+This is the case if the EML documents a database. In this case, we need to use the entityName of the table for which we want to perform the translation.
+
+```{r}
+library("eml.tools")
+data("animals_db_eml")
+data("animals_data")
+animals_data
+eml_translate_factors(df = animals_data,
+                      eml = animals_db_eml,
+                      which_table = "english_animals",
+                      keep = FALSE)
+eml_translate_factors(df = animals_data,
+                      eml = animals_db_eml,
+                      which_table = "english_animals",
+                      keep = TRUE)
 
 ```

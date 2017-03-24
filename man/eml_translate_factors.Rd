@@ -13,7 +13,10 @@ eml_translate_factors(df, eml, keep = FALSE, which_table = NULL)
 
 \item{keep}{Whether to keep the columns with codes. If FALSE, the meanings replace the factors previous codes.}
 
-\item{which_table}{for which table to retrieve the factors, if there are several tables (index)}
+\item{which_table}{for which table to retrieve the factors, if there are several tables (entityName)}
+}
+\value{
+A data.frame with translated factors
 }
 \description{
 Translate factors into their meanings
